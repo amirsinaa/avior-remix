@@ -1,5 +1,5 @@
 import { Links, Meta, Link } from 'remix'
-import homePageStyles from '../styles/home.css'
+import animationStyles from '../styles/animation.css'
 import profilePicture from '../../public/profile-pictures/motahareh-colorful.png'
 
 export const meta = () => {
@@ -10,7 +10,7 @@ export const meta = () => {
 }
 
 export const links = () => {
-	return [{ rel: 'stylesheet', href: homePageStyles }]
+	return [{ rel: 'stylesheet', href: animationStyles }]
 }
 
 export default function Index() {
