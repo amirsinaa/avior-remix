@@ -1,4 +1,14 @@
 import { Links, Meta, Outlet, ScrollRestoration, LiveReload } from 'remix'
+import styles from './tailwind.css'
+
+export function links() {
+	return [
+		{
+			rel: 'stylesheet',
+			href: styles,
+		},
+	]
+}
 
 export function meta() {
 	return {
