@@ -1,0 +1,27 @@
+@keyframes fadeIn {
+  0% {
+		opacity: 0.5;
+  }
+  100% {
+		opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeftWithOpacity {
+  0% {
+    transform: translateY(-10%);
+		opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+		opacity: 1;
+  }
+}
+
+.about-me-text-content-wrapper {
+	animation: 850ms ease-out 0s 1 slideInFromLeftWithOpacity;
+}
+
+.about-me-image-content-wrapper {
+  animation: 550ms ease-out 100ms 1 fadeIn;
+}
