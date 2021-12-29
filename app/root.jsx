@@ -1,8 +1,10 @@
 import { Links, Meta, Outlet, ScrollRestoration, LiveReload } from 'remix'
+import globalStyles from './styles/global.css'
 import styles from './tailwind.css'
 
 export function links() {
 	return [
+		{ rel: 'stylesheet', href: globalStyles },
 		{
 			rel: 'stylesheet',
 			href: styles,
