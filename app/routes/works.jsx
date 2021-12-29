@@ -25,6 +25,7 @@ export default function Works() {
 		<main>
 			<section className='lg:justify-center lg:content-center text-gray-600 body-font container mx-auto flex px-0 py-14 items-center flex-col'>
 				<section className='container mx-auto p-10 md:p-20 grid lg:grid-cols-2 2xl:grid-cols-3 grid-cols-1 gap-y-10 transform duration-500'>
+					{/* TODO: refactor this page and write a new work-card component instead of repeating html tags */}
 					<article className='shadow-md mx-auto max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl cursor-pointer object-cover object-center'>
 						<div className='max-h-140 overflow-hidden'>
 							<img
