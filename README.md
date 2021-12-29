@@ -1,53 +1,87 @@
-# Welcome to Remix!
+
+# Avior portfolio using https://remix.run
+
 
 - [Remix Docs](https://remix.run/docs)
 
-## Development
 
-From your terminal:
 
-```sh
-npm run dev
-```
+##  Netlify Setup
 
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
+1. Install the [Netlify CLI](https://www.netlify.com/products/dev/):
 
 ```sh
-npm run build
+
+npm i -g netlify-cli
+
 ```
 
-Then run the app in production mode:
+2. Sign up and log in to Netlify:
 
 ```sh
-npm start
+
+netlify login
+
 ```
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
+3. Create a new site:
 
 ```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
+
+netlify init
+
 ```
+
+4. You'll need to tell Netlify to use Node 14, as at the time of writing Netlify uses Node 12 by [default](https://docs.netlify.com/functions/build-with-javascript/#runtime-settings)
+
+```sh
+
+netlify env:set AWS_LAMBDA_JS_RUNTIME nodejs14.x
+
+```
+
+##  Development
+
+You will be running two processes during development when using Netlify as your server.
+
+- Your Netlify server in one
+
+- The Remix development server in another
+
+```sh
+
+# in one tab
+
+$ npm run dev:netlify
+
+# in another
+
+$ npm run dev
+
+```
+
+Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
+
+If you'd rather run everything in a single tab, you can look at [concurrently](https://npm.im/concurrently) or similar tools to run both processes in one tab.
+
+##  Deployment
+
+To deploy to Netlify, set your `AWS_LAMBDA_JS_RUNTIME` environment variable to `nodejs14.x` in the Netlify UI or via the Netlify CLI with `netlify env:set AWS_LAMBDA_JS_RUNTIME nodejs14.x`
+
+There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
+
+```sh
+
+$ npm run build
+
+# preview deployment
+
+$ netlify deploy
+
+# production deployment
+
+$ netlify deploy --prod
+
+```
+
+> Development and production integrated with netlify guide credit goes to the nimi user : [this repo](https://github.com/nimi/remix-run-netlify/)
